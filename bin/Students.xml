@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+<hibernate-mapping>  
+	<!-- name 实体类  table 表名 -->
+    <class name="hibernate.Students" table="students" >
+    <!-- 开启二级缓存 -->
+    <!-- usage 表示事物模式   并发访问策略
+    	read-only 只读事物模式 效率比较高
+    	
+    	include="all"  关联延迟加载
+    	include="non-lazy"  不关联延迟加载
+    	
+    	region=""  定义表名   或则一组 表使用缓存策略 
+    	encache 中的  name="hibernate.Students"
+     -->
+    <cache usage="read-only" />
+    
+        <id name="sid" type="int" column="sid">  
+            <generator class="assigned" />  
+        </id>  
+        <property name="sname" column="sname" type="string"/>  
+        <property name="gender" column="gender" type="string"/>  
+        <property name="birthday" column="birthday" type="java.util.Date"/>  
+        <property name="address" column="address" type="string"/>  
+    </class>  
+</hibernate-mapping>
